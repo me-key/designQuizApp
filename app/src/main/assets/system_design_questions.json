@@ -1,0 +1,2420 @@
+[
+    {
+        "id": 1,
+        "question": "In a consistent hashing ring, what is the primary purpose of introducing 'virtual nodes'?",
+        "options": [
+            "To increase the total storage capacity of the ring",
+            "To ensure data persistence during node failures",
+            "To mitigate data hotspots and ensure more uniform distribution",
+            "To reduce network latency between nodes"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Virtual nodes map a single physical node to multiple points on the ring. This statistical distribution helps balance the load more evenly across physical nodes, preventing hotspots where one node handles a disproportionate amount of traffic or data.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 2,
+        "question": "Which isolation level in a relational database prevents 'Dirty Reads' but allows 'Non-Repeatable Reads'?",
+        "options": [
+            "Read Uncommitted",
+            "Read Committed",
+            "Repeatable Read",
+            "Serializable"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Read Committed ensures that a transaction only sees data that has been committed. It prevents Dirty Reads, but data retrieved twice within the same transaction might differ if another transaction commits changes in between (Non-Repeatable Read).",
+        "subject": "Databases"
+    },
+    {
+        "id": 3,
+        "question": "In the context of PACELC theorem, what does the system trade-off when the system is operating normally (system is running, no partitions)?",
+        "options": [
+            "Consistency vs. Availability",
+            "Latency vs. Consistency",
+            "Availability vs. Partition Tolerance",
+            "Latency vs. Availability"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "PACELC extends CAP. The 'ELC' part states: Else (when not partitioned), trade off Latency and Consistency. You can either replicate data synchronously (Consistency) paying a latency cost, or asynchronously (Latency) sacrificing strict consistency.",
+        "subject": "Databases"
+    },
+    {
+        "id": 4,
+        "question": "Which of the following creates a 'Thundering Herd' problem in a caching system?",
+        "options": [
+            "Cache penetration where requests query non-existent keys",
+            "Multiple clients simultaneously trying to rebuild a hot cache key that just expired",
+            "Using a Write-Through cache strategy",
+            "Sharding the cache improperly"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The Thundering Herd problem occurs when a popular cache item expires, and a large number of concurrent requests all miss the cache at the same time and hit the database simultaneously to regenerate the entry.",
+        "subject": "Databases"
+    },
+    {
+        "id": 5,
+        "question": "What is the key difference between a Reverse Proxy and a Forward Proxy?",
+        "options": [
+            "A Reverse Proxy sits before the client; a Forward Proxy sits before the origin server",
+            "A Reverse Proxy hides the server's identity; a Forward Proxy hides the client's identity",
+            "A Reverse Proxy cannot cache content; a Forward Proxy can",
+            "A Reverse Proxy requires authentication; a Forward Proxy does not"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Forward Proxy acts on behalf of the client (hiding the client). A Reverse Proxy acts on behalf of the server (hiding the server) and is used for load balancing, caching, and security.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 6,
+        "question": "In a microservices architecture, what is the 'Saga Pattern' used for?",
+        "options": [
+            "Service discovery",
+            "Managing distributed transactions across multiple services",
+            "Load balancing specific endpoints",
+            "Aggregating logs from multiple services"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The Saga Pattern manages distributed transactions as a sequence of local transactions. Each local transaction updates the database and publishes an event to trigger the next local transaction. If one fails, compensating transactions are triggered to undo changes.",
+        "subject": "Databases"
+    },
+    {
+        "id": 7,
+        "question": "Which Bloom Filter operation is theoretically impossible?",
+        "options": [
+            "Adding an element",
+            "Checking membership",
+            "Deleting an element",
+            "Resizing"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Standard Bloom Filters do not support deletion because bits are shared between elements. Removing a bit for one element might accidentally remove a bit required by another element. Counting Bloom Filters are a variation that supports deletion.",
+        "subject": "Databases"
+    },
+    {
+        "id": 8,
+        "question": "What is 'Gossip Protocol' primarily used for in distributed systems like Cassandra?",
+        "options": [
+            "Data serialization",
+            "Master-slave replication",
+            "Node discovery and failure detection",
+            "Query parsing"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Gossip protocols are peer-to-peer communication protocols where nodes periodically exchange state information about themselves and other nodes they know about. This allows the cluster to decentralizedly detect failures and effectively manage membership.",
+        "subject": "Networking"
+    },
+    {
+        "id": 9,
+        "question": "In the context of database replication, what is 'Statement-based replication'?",
+        "options": [
+            "Replicating the actual data bytes changed",
+            "Replicating the SQL queries (statements) executed",
+            "Replicating the Write Ahead Log (WAL) segments",
+            "Replicating the in-memory state"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Statement-based replication sends the SQL statements (e.g., INSERT, UPDATE) to the replica to be executed. It is compact but can be nondeterministic (e.g., if the query uses RAND() or NOW()).",
+        "subject": "Databases"
+    },
+    {
+        "id": 10,
+        "question": "Which data structure is most commonly used to implement a Rate Limiter using the 'Sliding Window Log' algorithm?",
+        "options": [
+            "Hash Map",
+            "Sorted Set",
+            "Linked List",
+            "Bloom Filter"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Sorted Set (like in Redis) is often used for Sliding Window Logs. Time-stamps of requests are stored as scores. To count requests in the window, you remove old timestamps and count the remaining elements.",
+        "subject": "Caching"
+    },
+    {
+        "id": 11,
+        "question": "What is the main disadvantage of using a 'Leaky Bucket' algorithm for rate limiting?",
+        "options": [
+            "It cannot handle bursts of traffic at all",
+            "It is memory intensive",
+            "It processes requests at a constant rate, potentially delaying bursts",
+            "It is difficult to implement"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Leaky Bucket smoothens traffic. It processes requests at a fixed constant rate. If traffic arrives in a burst, it is queued and processed slowly, which might introduce latency, unlike Token Bucket which allows bursts.",
+        "subject": "Security"
+    },
+    {
+        "id": 12,
+        "question": "What does 'Backpressure' refer to in a stream processing system?",
+        "options": [
+            "The database pushing updates to the cache",
+            "The ability of a consumer to signal the producer to slow down",
+            "Retrying failed requests with exponential backoff",
+            "Replicating data to a backup server"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Backpressure is a feedback mechanism where a consumer signals to the producer that it is overwhelmed, causing the producer to reduce its rate of data emission to prevent buffer overflows or system collapse.",
+        "subject": "General"
+    },
+    {
+        "id": 13,
+        "question": "In a Leader-Follower replication topology, what is 'Read-Your-Writes' consistency?",
+        "options": [
+            "A guarantee that a user will always see their own updates immediately",
+            "A guarantee that all replicas are perfectly synchronized",
+            "A guarantee that writes are always faster than reads",
+            "A guarantee that the leader is always available"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Read-Your-Writes (or Read-after-Write) ensures that a client can immediately read the data it just submitted. In leader-follower, this often means routing reads for a specific user to the leader if they recently modified data.",
+        "subject": "Databases"
+    },
+    {
+        "id": 14,
+        "question": "Which database scaling technique involves splitting a table's columns across multiple tables?",
+        "options": [
+            "Horizontal Partitioning (Sharding)",
+            "Vertical Partitioning",
+            "Replication",
+            "Indexing"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Vertical Partitioning splits a table by columns. For example, storing frequently accessed columns in one table and large BLOB columns in another to improve I/O performance for the commonly accessed data.",
+        "subject": "Databases"
+    },
+    {
+        "id": 15,
+        "question": "What is 'Head-of-Line Blocking' in HTTP/1.1?",
+        "options": [
+            "The firewall blocking the first packet of a connection",
+            "The first request in a persistent connection blocking subsequent requests until it completes",
+            "The load balancer rejecting the first request",
+            "DNS resolution failure for the first request"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "In HTTP/1.1 pipelining, request processing is FIFO. If the first request takes a long time, subsequent requests on the same connection must wait, even if they could be processed quickly. HTTP/2 solves this with multiplexing.",
+        "subject": "Databases"
+    },
+    {
+        "id": 16,
+        "question": "What is the primary function of a 'Circuit Breaker' pattern?",
+        "options": [
+            "To load balance traffic",
+            "To prevent cascading failures by failing fast when a remote service is down",
+            "To route traffic based on geolocation",
+            "To encrypt traffic between services"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Circuit Breaker wraps a protected function call. If failures exceed a threshold, the breaker 'trips' and immediately returns an error (failing fast) without invoking the remote service, preventing resource exhaustion and cascading failures.",
+        "subject": "Microservices"
+    },
+    {
+        "id": 17,
+        "question": "In the context of CDN, what is 'Anycast' used for?",
+        "options": [
+            "Broadcasting data to all nodes simultaneously",
+            "Routing a request to the topologically nearest node with the same IP address",
+            "Encrypting the data stream",
+            "Caching dynamic content"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Anycast allows multiple servers (CDN edge nodes) to announce the same IP address. BGP routing directs the user's request to the nearest available server based on network topology.",
+        "subject": "Caching"
+    },
+    {
+        "id": 18,
+        "question": "What is the 'Split-Brain' problem in a distributed cluster?",
+        "options": [
+            "When the load balancer splits traffic 50/50",
+            "When network partition causes two parts of a cluster to both believe they are the leader",
+            "When the database splits a table into two shards",
+            "When a cache node fails and splits the hash ring"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Split-brain occurs when a network failure divides a cluster. If the consensus mechanism fails, nodes in both partitions might elect a leader, leading to data corruption as both accept writes independently.",
+        "subject": "Databases"
+    },
+    {
+        "id": 19,
+        "question": "What is 'Write Amplification' in SSDs and LSM-tree databases?",
+        "options": [
+            "The increase in network traffic due to replication",
+            "The ratio of physical bytes written to the storage device vs. logical bytes written by the user",
+            "Writing data to multiple caches",
+            "The latency introduced by writing to disk"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Write amplification happens when one logical write triggers multiple physical writes. In LSM-trees (like Cassandra/RocksDB), this occurs during compaction processes where data is repeatedly rewritten to merge segments.",
+        "subject": "Databases"
+    },
+    {
+        "id": 20,
+        "question": "Which of the following serves to solve the 'Hot Key' problem in a sharded database?",
+        "options": [
+            "Increasing the replication factor",
+            "Adding more shards",
+            "Adding a random salt/suffix to the key to distribute it",
+            "Using a larger instance type"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "If a single key (e.g., a celebrity user) receives massive traffic, it hits one shard. Salting the key (e.g., 'celebrity_1', 'celebrity_2') distributes the data/load across multiple shards, though it complicates reads (need to read all salts).",
+        "subject": "Databases"
+    },
+    {
+        "id": 21,
+        "question": "What is the role of a 'Write-Ahead Log' (WAL) in database systems?",
+        "options": [
+            "To cache read queries",
+            "To ensure atomicity and durability by recording changes before they are applied to data pages",
+            "To store non-relational data",
+            "To manage user sessions"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "WAL ensures durability. Changes are first appended to a log file on disk. If the database crashes, the log is replayed to restore the database to a consistent state.",
+        "subject": "Databases"
+    },
+    {
+        "id": 22,
+        "question": "In gRPC, what encoding format is used by default?",
+        "options": [
+            "JSON",
+            "XML",
+            "Protocol Buffers (Protobuf)",
+            "Thrift"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "gRPC uses Protocol Buffers (Protobuf) by default. It is a binary serialization format that is smaller and faster than text-based formats like JSON.",
+        "subject": "Microservices"
+    },
+    {
+        "id": 23,
+        "question": "What is 'Event Sourcing'?",
+        "options": [
+            "Sourcing events from third-party APIs",
+            "Storing the state of an application as a sequence of state-changing events",
+            "Triggering lambdas on database updates",
+            "Using a message queue for all communication"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Event Sourcing persists the state of a business entity as a sequence of state-changing events rather than just the current state. The current state is derived by replaying the events.",
+        "subject": "Microservices"
+    },
+    {
+        "id": 24,
+        "question": "Which consensus algorithm is known for its 'Strong Leader' based approach?",
+        "options": [
+            "Paxos",
+            "Raft",
+            "Gossip",
+            "Proof of Work"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Raft is designed to be understandable and relies heavily on a strong leader selection. Log entries only flow from the leader to followers.",
+        "subject": "General"
+    },
+    {
+        "id": 25,
+        "question": "What is a 'Cuckoo Filter'?",
+        "options": [
+            "A filter that removes duplicates from a stream",
+            "A probabilistic data structure that supports deletion, an improvement over Bloom Filters",
+            "A specialized load balancer",
+            "A search algorithm"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Cuckoo Filters are a probabilistic data structure for set membership checks. Unlike Bloom Filters, they support deleting elements and can achieve higher space efficiency for certain false positive rates.",
+        "subject": "Databases"
+    },
+    {
+        "id": 26,
+        "question": "What distinguishes a 'Columnar Database' (e.g., Cassandra, HBase) from a Row-based one?",
+        "options": [
+            "It stores data in JSON format",
+            "It stores data by columns rather than by rows, optimizing for read-heavy analytical workloads",
+            "It does not support SQL",
+            "It uses a graph structure"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Columnar databases store values of the same column contiguously on disk. This is efficient for analytical queries (aggregations usually only need a subset of columns) and compression.",
+        "subject": "Databases"
+    },
+    {
+        "id": 27,
+        "question": "What is the 'Long Polling' technique?",
+        "options": [
+            "A client polls the server at long intervals",
+            "A client request is held open by the server until new data is available or a timeout occurs",
+            "Streaming video over HTTP",
+            "Sending large files in chunks"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Long Polling emulates a push mechanism. The client requests information, and the server holds the request open until data is available, then responds immediately. The client then immediately sends another request.",
+        "subject": "Networking"
+    },
+    {
+        "id": 28,
+        "question": "Which consistency model allows reads to return out-of-date data but guarantees that if no new updates are made, existing objects will eventually converge?",
+        "options": [
+            "Strong Consistency",
+            "Sequential Consistency",
+            "Eventual Consistency",
+            "Linearizability"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Eventual Consistency guarantees that if no new updates are made to a given data item, eventually all accesses to that item will return the last updated value. Used in DNS, Cassandra, etc.",
+        "subject": "Networking"
+    },
+    {
+        "id": 29,
+        "question": "What is 'Database Denormalization' primarily used for?",
+        "options": [
+            "Reducing data redundancy",
+            "Improving write performance",
+            "Improving read performance by avoiding expensive joins",
+            "Ensuring strict data integrity"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Denormalization involves adding redundant data to a database (e.g., storing user name in the comments table) to avoid complex JOIN operations during reads, optimizing read performance.",
+        "subject": "Databases"
+    },
+    {
+        "id": 30,
+        "question": "What is 'Idempotency' in API design?",
+        "options": [
+            "The API is highly available",
+            "The API can handle infinite load",
+            "Making multiple identical requests has the same effect as making a single request",
+            "The API requires authentication"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "An idempotent operation produces the same result regardless of how many times it is executed. For example, 'DELETE /user/123' is idempotent; calling it 10 times has the same outcome (user is deleted).",
+        "subject": "Microservices"
+    },
+    {
+        "id": 31,
+        "question": "What is the primary benefit of 'Server-Side Rendering' (SSR) compared to Client-Side Rendering (CSR)?",
+        "options": [
+            "Lower server load",
+            "Better SEO and faster First Contentful Paint (FCP)",
+            "Simpler backend architecture",
+            "Reduced bandwidth usage"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "SSR delivers fully rendered HTML to the client, which is immediately visible and crawlable by search engines (SEO). CSR requires the browser to download JS and execute it before content appears.",
+        "subject": "General"
+    },
+    {
+        "id": 32,
+        "question": "In distributed tracing (e.g., Jaeger, Zipkin), what is a 'Span'?",
+        "options": [
+            "The total time of a request",
+            "A single unit of work (e.g., a database query) with a start and end time",
+            "The distance between two data centers",
+            "A unique ID for a user"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Span represents a logical unit of work in a distributed system, such as a function call or a database query. It has a name, start time, and duration. Traces are built from a tree of Spans.",
+        "subject": "Databases"
+    },
+    {
+        "id": 33,
+        "question": "Which of the following is a key characteristic of the 'Vector Clock' algorithm?",
+        "options": [
+            "It synchronizes physical time across servers using NTP",
+            "It captures causality between events in a distributed system",
+            "It is used for CPU scheduling",
+            "It ensures strong consistency"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Vector Clocks are a mechanism to determine the partial ordering of events in a distributed system and detect causality violations (concurrent updates).",
+        "subject": "General"
+    },
+    {
+        "id": 34,
+        "question": "What is 'Geohashing' used for?",
+        "options": [
+            "Encrypting geographic coordinates",
+            "Converting 2D latitude/longitude into a single alphanumeric string (1D)",
+            "Hashing passwords specific to a region",
+            "Load balancing based on IP address"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Geohashing encodes a geographic location into a short string of letters and digits. Points that are close geographically generally have similar prefixes, useful for proximity searches in databases.",
+        "subject": "Databases"
+    },
+    {
+        "id": 35,
+        "question": "What is the 'Sidecar Pattern' in container orchestration (Kubernetes)?",
+        "options": [
+            "Running a secondary container in the same Pod to assist the main container (e.g., logging, proxying)",
+            "Running a backup database",
+            "A deployment strategy like Blue-Green",
+            "Mounting external storage"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "The Sidecar pattern deploys components of an application into a separate process or container to provide isolation and encapsulation. Common uses are service mesh proxies (Envoy) or log shippers.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 36,
+        "question": "In the context of SSL/TLS, what is 'SSL Termination'?",
+        "options": [
+            "Stopping the SSL handshake due to an error",
+            "Decrypting encrypted traffic at the load balancer/proxy before sending plain text to the backend",
+            "The expiration of an SSL certificate",
+            "Blocking SSL traffic"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "SSL Termination occurs when the Load Balancer or Reverse Proxy handles the encryption/decryption. This offloads the CPU-intensive crypto work from the backend servers.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 37,
+        "question": "What is the default isolation level in PostgreSQL?",
+        "options": [
+            "Read Uncommitted",
+            "Read Committed",
+            "Repeatable Read",
+            "Serializable"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The default isolation level in PostgreSQL is Read Committed. This differs from MySQL (InnoDB), which defaults to Repeatable Read.",
+        "subject": "Databases"
+    },
+    {
+        "id": 38,
+        "question": "What is 'Cache Stampede'?",
+        "options": [
+            "When the cache is full and evicts items",
+            "Another term for Thundering Herd where expiration triggers parallel queries",
+            "When cache data becomes inconsistent",
+            "When the cache is larger than the database"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Cache Stampede (or Thundering Herd) happens when a hot key expires and parallel requests all try to recompute the value, putting heavy load on the backing store. Solutions include probabilistic early expiration or locking.",
+        "subject": "Databases"
+    },
+    {
+        "id": 39,
+        "question": "Which messaging delivery guarantee is the hardest to achieve?",
+        "options": [
+            "At-most-once",
+            "At-least-once",
+            "Exactly-once",
+            "Best-effort"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Exactly-once delivery is the most difficult because it requires coordination between the producer, the broker, and the consumer to ensure messages are neither lost nor duplicated, often impacting performance.",
+        "subject": "General"
+    },
+    {
+        "id": 40,
+        "question": "What is the 'Two-Phase Commit' (2PC) protocol used for?",
+        "options": [
+            "Replicating data asynchronously",
+            "Achieving atomic distributed transactions across multiple nodes",
+            "Authenticating users in two steps",
+            "Compacting database logs"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "2PC is a protocol for distributed transactions. Phase 1: Prepare (Voting). Phase 2: Commit or Abort. It ensures that all participating nodes either commit the transaction or abort it, ensuring atomicity.",
+        "subject": "Networking"
+    },
+    {
+        "id": 41,
+        "question": "What is a 'Quadtree' used for in system design?",
+        "options": [
+            "Storing 4 copies of data",
+            "Spatial indexing to efficiently query 2D regions",
+            "Managing thread pools",
+            "Optimizing network routing"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Quadtree partitions a two-dimensional space by recursively subdividing it into four quadrants. It is commonly used for spatial indexing (e.g., finding nearby Uber drivers).",
+        "subject": "Databases"
+    },
+    {
+        "id": 42,
+        "question": "What is the main benefit of 'Immutable Infrastructure'?",
+        "options": [
+            "Servers are never replaced",
+            "Updates are applied by modifying existing servers in place",
+            "Servers are never modified after deployment; updates meant replacing servers",
+            "It requires less storage"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Immutable Infrastructure prevents 'configuration drift'. Instead of patching running servers, you deploy new images and tear down old ones. This ensures consistency and simplified rollbacks.",
+        "subject": "General"
+    },
+    {
+        "id": 43,
+        "question": "What is 'Zombie Process' in a Linux system?",
+        "options": [
+            "A process that consumes all CPU",
+            "A process that has completed execution but still has an entry in the process table",
+            "A virus",
+            "A background daemon"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Zombie process (defunct) has finished execution but its parent has not yet waited for it (read its exit code). It holds a slot in the process table but consumes no other resources.",
+        "subject": "General"
+    },
+    {
+        "id": 44,
+        "question": "Which of the following reduces the size of the inverted index in a Search Engine?",
+        "options": [
+            "Store more metadata",
+            "Use delta encoding or variable-byte encoding for document IDs",
+            "Increase the replication factor",
+            "Use XML instead of JSON"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "In an inverted index, document IDs are sorted. Storing the difference (delta) between adjacent IDs allows the use of small integers, which compress very well using variable-byte encoding (VB) or PForDelta.",
+        "subject": "Databases"
+    },
+    {
+        "id": 45,
+        "question": "What is 'Tail Latency'?",
+        "options": [
+            "The latency of the very first request",
+            "The average latency",
+            "The high latency experienced by a small percentage of requests (e.g., 99th percentile)",
+            "The network delay"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Tail latency refers to the response times at the high end of the distribution (p99 or p99.9). Improving tail latency is critical for user experience in large distributed systems where a single page load might fan out to many services.",
+        "subject": "General"
+    },
+    {
+        "id": 46,
+        "question": "What is key difference between 'Process' and 'Thread'?",
+        "options": [
+            "Threads have their own memory space; Processes share memory",
+            "Processes have their own memory space; Threads share memory of the parent process",
+            "Threads take longer to create",
+            "Processes are used for I/O; Threads for CPU"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Process is an independent execution unit with its own memory space. Threads exist within a process and share the same memory (heap), making context switching between threads faster but synchronization harder.",
+        "subject": "General"
+    },
+    {
+        "id": 47,
+        "question": "What is 'Operational Transformation' (OT) or 'CRDTs' used for?",
+        "options": [
+            "Transforming monolithic apps to microservices",
+            "Real-time collaborative editing (e.g., Google Docs)",
+            "Database schema migration",
+            "Image processing"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "OT and CRDTs (Conflict-free Replicated Data Types) are algorithms used to handle concurrent edits in real-time collaborative applications, ensuring all users see the same final state despite variable latency.",
+        "subject": "General"
+    },
+    {
+        "id": 48,
+        "question": "What is 'HyperLogLog'?",
+        "options": [
+            "A distributed log system",
+            "A probabilistic data structure for estimating the cardinality (count of unique elements) of a set",
+            "A consensus algorithm",
+            "A database index type"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "HyperLogLog is an algorithm for the count-distinct problem. It uses extremely little memory to estimate the number of unique elements in a very large dataset with high accuracy.",
+        "subject": "General"
+    },
+    {
+        "id": 49,
+        "question": "What is the 'N+1 Problem' in ORMs?",
+        "options": [
+            "An off-by-one index error",
+            "When data is replicated to N+1 nodes",
+            "Fetching a parent entity and then executing N separate queries to fetch related children",
+            "A recursion limit"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "The N+1 problem occurs when code iterates over a list of N objects and executes a separate database query for each object to fetch related data, resulting in N+1 total queries. Eager loading (JOINs) solves this.",
+        "subject": "Databases"
+    },
+    {
+        "id": 50,
+        "question": "In the context of REST, what does HATEOAS stand for?",
+        "options": [
+            "Hypertext As The Engine Of Application State",
+            "HTTP Authentication Transfer Encryption verify On All Servers",
+            "High Availability Transfer Entry On Application Server",
+            "Hypertext And Transfer Encoding Of All States"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "HATEOAS allows a client to interact with a network application entirely through hypermedia provided dynamically by application servers. A client doesn't need prior knowledge of how to interact with the application.",
+        "subject": "General"
+    },
+    {
+        "id": 51,
+        "question": "What is the primary advantage of using a 'Skip List' data structure?",
+        "options": [
+            "It uses less memory than a linked list",
+            "It provides O(log n) search complexity like a balanced tree but is easier to implement concurrently",
+            "It allows O(1) random access",
+            "It is optimal for write-heavy workloads on disk"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Skip Lists are probabilistic data structures that allow fast search within an ordered sequence of elements. They are simpler to implement than balanced trees (like Red-Black trees) and are widely used in in-memory databases (e.g., Redis Sorted Sets, MemSQL) because they support lock-free concurrent updates effectively.",
+        "subject": "Databases"
+    },
+    {
+        "id": 52,
+        "question": "In the context of database locking, what is 'Optimistic Locking'?",
+        "options": [
+            "Locking the record before reading it",
+            "Assuming no conflict will occur and validating the version/timestamp before committing",
+            "A lock that automatically expires",
+            "Locking all tables at the start of a transaction"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Optimistic Locking allows multiple users to access the same record without blocking. It checks a version number or timestamp upon update. If the version hasn't changed since the read, the update proceeds; otherwise, it fails/retries.",
+        "subject": "Databases"
+    },
+    {
+        "id": 53,
+        "question": "What is 'Head-of-Line Blocking' in TCP?",
+        "options": [
+            "When the first packet is lost, the receiver cannot process subsequent packets even if they arrived",
+            "Blocking the HTTP header",
+            "A firewall rule",
+            "The delay in establishing a connection"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "TCP guarantees in-order delivery. If a packet is lost, the TCP stack at the receiver must buffer subsequent packets until the lost one is retransmitted, blocking the application from reading later data (Head-of-Line blocking). QUIC solves this for streams.",
+        "subject": "Databases"
+    },
+    {
+        "id": 54,
+        "question": "Which strategy effectively mitigates the 'Slashdot Effect' (flash crowd)?",
+        "options": [
+            "Increasing the database connection pool",
+            "Implementing a Content Delivery Network (CDN) and aggressive caching",
+            "Switching from TCP to UDP",
+            "Using a larger instance for the backend"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The Slashdot Effect refers to a website becoming overwhelmed by a sudden spike in traffic. CDNs offload traffic from the origin server by serving static and cached content from edge locations, absorbing the spike.",
+        "subject": "Caching"
+    },
+    {
+        "id": 55,
+        "question": "What is 'CQRS' (Command Query Responsibility Segregation)?",
+        "options": [
+            "Using separate databases for writes (Command) and reads (Query)",
+            "A SQL optimization technique",
+            "A load balancing algorithm",
+            "Separating frontend and backend code"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "CQRS is a pattern where you separate the model for updating information (Command) from the model for reading information (Query). This often involves using different data stores optimized for write and read workloads respectively, synchronized via events.",
+        "subject": "Microservices"
+    },
+    {
+        "id": 56,
+        "question": "In Kafka, what ensures the ordering of messages?",
+        "options": [
+            "Ordering is guaranteed across the entire topic",
+            "Ordering is guaranteed only within a specific partition",
+            "Ordering is never guaranteed",
+            "Timestamps added by the consumer"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Kafka guarantees message ordering only within a single partition. If a topic has multiple partitions, there is no global order guarantee across them.",
+        "subject": "Databases"
+    },
+    {
+        "id": 57,
+        "question": "What is a 'Reverse Index' (Inverted Index) primarily used for?",
+        "options": [
+            "Sorting numerical data",
+            "Full-text search engines to map words to documents",
+            "Reversing a linked list",
+            "Indexing encrypted columns"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "An Inverted Index maps content (words/tokens) to its location in a document or a set of documents. It is the core data structure of search engines like Elasticsearch and Solr.",
+        "subject": "Databases"
+    },
+    {
+        "id": 58,
+        "question": "What is the 'Token Bucket' algorithm used for?",
+        "options": [
+            "Token-based authentication",
+            "Rate limiting that allows for bursts to a certain extent",
+            "Collecting garbage in Java",
+            "Generating unique IDs"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The Token Bucket algorithm adds tokens to a bucket at a fixed rate. A request consumes a token. If the bucket is empty, the request is denied. Since the bucket has capacity, it allows bursts of traffic up to the bucket size.",
+        "subject": "Security"
+    },
+    {
+        "id": 59,
+        "question": "Which of the following describes 'Sticky Sessions' (Session Affinity)?",
+        "options": [
+            "Sessions that never expire",
+            "Routing all requests from a specific client to the same server instance",
+            "Storing session data in a sticky bit",
+            "Writing sessions to disk"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Sticky Sessions ensure that a user's requests are always routed to the same backend server. This simplifies state management (local session) but complicates scaling and creates uneven load distribution.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 60,
+        "question": "What is the 'Ambassador Pattern' in Kubernetes?",
+        "options": [
+            "A container that proxies network traffic to and from the main container",
+            "A designated leader node",
+            "A service that negotiates authentication",
+            "A deployment strategy"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "The Ambassador pattern involves a sidecar container that acts as a proxy for the application container. It handles connectivity tasks like circuit breaking, routing, and monitoring, decoupling them from the app logic.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 61,
+        "question": "What is 'False Sharing' in concurrent programming/systems?",
+        "options": [
+            "Two processes claiming to share memory but not doing so",
+            "Performance degradation when threads on different CPUs modify independent variables sharing the same cache line",
+            "A security vulnerability",
+            "Incorrectly sharing a database connection"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "False sharing occurs when multiple threads modify independent variables that happen to reside on the same cache line. This causes the cache line to 'ping-pong' between cores, invalidating caches and degrading performance.",
+        "subject": "Caching"
+    },
+    {
+        "id": 62,
+        "question": "What is the function of the 'Coordinator' node in a distributed transaction (2PC)?",
+        "options": [
+            "To store the logs",
+            "To manage the voting process and decide whether to commit or abort",
+            "To execute the SQL queries",
+            "To load balance the requests"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The Coordinator manages the Two-Phase Commit protocol. It asks participants to prepare, collects votes, and then issues the final Commit or Abort command.",
+        "subject": "Networking"
+    },
+    {
+        "id": 63,
+        "question": "Which hashing algorithm is widely used for 'Consistent Hashing'?",
+        "options": [
+            "MD5 or SHA-1 (often used for the ring space)",
+            "Bcrypt",
+            "Argon2",
+            "CRC32"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Consistent hashing maps nodes and keys to a large ID space (like a ring) using a hash function. MD5 or SHA-1 or MurmurHash are commonly used to generate uniform distribution on the ring.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 64,
+        "question": "What is 'Database Sharding' based on 'Directory' approach?",
+        "options": [
+            "Using the file system directory",
+            "A lookup service that knows where each specific shard key is located",
+            "Sharding alphabetically",
+            "Using a single large directory table"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Directory-based sharding uses a lookup table (Directory) to map keys to shards. This provides flexibility (easy to move data) but the directory itself can become a single point of failure or bottleneck.",
+        "subject": "Databases"
+    },
+    {
+        "id": 65,
+        "question": "What does ACID stand for?",
+        "options": [
+            "Atomicity, Consistency, Isolation, Durability",
+            "Availability, Consistency, Isolation, Durability",
+            "Atomicity, Concurrency, Isolation, Data",
+            "Availability, Cache, Integrity, Durability"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "ACID properties (Atomicity, Consistency, Isolation, Durability) guarantee that database transactions are processed reliably.",
+        "subject": "Databases"
+    },
+    {
+        "id": 66,
+        "question": "In a Peer-to-Peer network, what is a 'DHT'?",
+        "options": [
+            "Direct Hash Table",
+            "Distributed Hash Table",
+            "Dynamic Host Translation",
+            "Data Hoisting Tool"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Distributed Hash Table (DHT) (like Kademlia, Chord) provides a decentralized lookup service similar to a hash table: (key, value) pairs are stored in a DHT, and any participating node can efficiently retrieve the value associated with a given key.",
+        "subject": "Networking"
+    },
+    {
+        "id": 67,
+        "question": "What implies 'Strong Consistency' in a distributed system?",
+        "options": [
+            "After a write, all subsequent reads (by any client) will return that value",
+            "Writes are eventually propagated",
+            "The system never fails",
+            "Data is encrypted"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Strong Consistency ensures that once a write is acknowledged, any subsequent read operation will return that new value (or a more recent one). It often comes at the cost of higher latency or reduced availability (CAP theorem).",
+        "subject": "Databases"
+    },
+    {
+        "id": 68,
+        "question": "What is 'Exponential Backoff' used for?",
+        "options": [
+            "Calculating interest rates",
+            "Spacing out retries of failed network requests to prevent server overload",
+            "Sorting algorithm",
+            "Creating exponential graphs"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Exponential Backoff increases the wait time between retries exponentially (e.g., 1s, 2s, 4s, 8s). This prevents a 'thundering herd' of retries from overwhelming a recovering service.",
+        "subject": "Caching"
+    },
+    {
+        "id": 69,
+        "question": "What is a 'Bastion Host'?",
+        "options": [
+            "A server that is intentionally vulnerable",
+            "A jump server in a public subnet used to securely access instances in a private subnet",
+            "A backup server",
+            "A database master"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Bastion Host (Jump Box) is a special-purpose computer on a network specifically designed and configured to withstand attacks. It is the single point of entry to internal networks from the internet.",
+        "subject": "Security"
+    },
+    {
+        "id": 70,
+        "question": "What is 'TLS Handshake' responsible for?",
+        "options": [
+            "Transferring the data payload",
+            "Negotiating encryption algorithms and exchanging keys",
+            "Routing the packet",
+            "Compressing the data"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The TLS Handshake protocol allows the server and client to authenticate each other and to negotiate an encryption algorithm and cryptographic keys before data is exchanged.",
+        "subject": "Networking"
+    },
+    {
+        "id": 71,
+        "question": "Which of the following is NOT a benefit of using 'Protocol Buffers' over JSON?",
+        "options": [
+            "Smaller message size",
+            "Faster serialization/deserialization",
+            "Human readability",
+            "Backward code compatibility"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Protocol Buffers are a binary format, so they are not human-readable like JSON. Their main benefits are size, speed, and schema definitions.",
+        "subject": "Networking"
+    },
+    {
+        "id": 72,
+        "question": "What constitutes a 'Shared-Nothing Architecture'?",
+        "options": [
+            "Nodes share memory but not disk",
+            "Nodes share disk but not memory",
+            "Nodes share neither memory nor disk storage",
+            "Nodes share everything"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "In Shared-Nothing architecture, each node is independent and self-sufficient. There is no single point of contention across the system, allowing for near-linear scalability.",
+        "subject": "General"
+    },
+    {
+        "id": 73,
+        "question": "What is 'Time to Live' (TTL) in DNS?",
+        "options": [
+            "The time it takes to register a domain",
+            "The duration for which a DNS record is cached by resolvers",
+            "The ping time to the server",
+            "The time until the server expires"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "TTL in DNS tells the resolver/cache how long (in seconds) to keep the record before asking the authoritative nameserver again. Lower TTL allows faster propagation of changes but increases load on nameservers.",
+        "subject": "Caching"
+    },
+    {
+        "id": 74,
+        "question": "What is 'Dark Launching'?",
+        "options": [
+            "Launching a site in Dark Mode",
+            "Releasing features to a subset of users or effectively hidden to test performance",
+            "Shutting down servers at night",
+            "Launching illegal sites"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Dark Launching involves deploying code for a new feature into production but keeping it disabled or invisible to users (via feature flags), or running it in the background (shadow traffic) to test performance.",
+        "subject": "General"
+    },
+    {
+        "id": 75,
+        "question": "Which design pattern is best for handling complex business rules that change frequently?",
+        "options": [
+            "Singleton",
+            "Strategy Pattern or Rules Engine",
+            "Facade",
+            "Adapter"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Strategy Pattern allows selecting an algorithm at runtime. For very complex/dynamic rules, a Rules Engine is often preferred to decouple logic from code.",
+        "subject": "General"
+    },
+    {
+        "id": 76,
+        "question": "What is 'Snowflake' ID generation approach (e.g., Twitter Snowflake)?",
+        "options": [
+            "Random UUIDs",
+            "Generating unique 64-bit IDs roughly sorted by time",
+            "Using database auto-increment",
+            "Using a central counter"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Twitter Snowflake generates 64-bit IDs composed of a timestamp, a worker ID, and a sequence number. This allows decentralized generation of unique IDs that are k-sorted by time.",
+        "subject": "General"
+    },
+    {
+        "id": 77,
+        "question": "What is the primary use case for 'Redis'?",
+        "options": [
+            "Long-term archival storage",
+            "In-memory caching and real-time analytics",
+            "Storing large video files",
+            "Running complex SQL joins"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis is an in-memory data structure store used as a database, cache, and message broker. It is extremely fast but generally limited by RAM size.",
+        "subject": "Databases"
+    },
+    {
+        "id": 78,
+        "question": "What is 'Content Addressable Storage' (CAS)?",
+        "options": [
+            "Storage addressed by physical location",
+            "Storage where data is retrieved based on its content (hash) rather than its location",
+            "Storage for website content",
+            "A type of RAM"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "In CAS, information is retrieved based on its content (usually a cryptographic hash of the content) rather than its storage location. This naturally deduplicates data (e.g., Git, IPFS).",
+        "subject": "Networking"
+    },
+    {
+        "id": 79,
+        "question": "What problem does 'Consistent Hashing' solve when adding/removing nodes?",
+        "options": [
+            "It prevents any keys from moving",
+            "It minimizes the number of keys that need to be remapped",
+            "It ensures all nodes have equal CPU",
+            "It encrypts the keys consistently"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "In traditional modulo hashing, changing the number of nodes (N) remaps nearly all keys. Consistent Hashing limits remapping to only k/N keys (where k is total keys), significantly reducing data movement during scaling.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 80,
+        "question": "What is 'Multi-Version Concurrency Control' (MVCC)?",
+        "options": [
+            "Running multiple versions of the app",
+            "A method to handle database concurrency by keeping multiple versions of data items",
+            "Versioning API endpoints",
+            "Using Git for code"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "MVCC allows concurrent access to the database without locking. Readers succeed by reading a consistent snapshot (older version) of the data even if a writer is creating a new version simultaneously.",
+        "subject": "Databases"
+    },
+    {
+        "id": 81,
+        "question": "What is 'Jitter' in the context of retries?",
+        "options": [
+            "The nervousness of the developer",
+            "Adding random variation to backoff intervals to prevent synchronized retries",
+            "Packet loss",
+            "High latency"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Adding random 'Jitter' to retry intervals prevents 'Thundering Herd' scenarios where many clients retry at the exact same moment after a backoff.",
+        "subject": "Caching"
+    },
+    {
+        "id": 82,
+        "question": "What is the 'Strangler Fig' pattern?",
+        "options": [
+            "A botanical algorithm",
+            "Incrementally migrating a legacy system by gradually replacing specific pieces of functionality with new microservices",
+            "Choking the network bandwidth",
+            "A security attack"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The Strangler Fig pattern involves creating a new system around the edges of the old one, gradually intercepting calls and routing them to the new system until the old system can be decommissioned.",
+        "subject": "General"
+    },
+    {
+        "id": 83,
+        "question": "Which is a characteristic of 'UDP' compared to TCP?",
+        "options": [
+            "Connection-oriented",
+            "Guaranteed delivery",
+            "Fire-and-forget (Connectionless, unreliable)",
+            "Flow control"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "UDP is connectionless and does not guarantee delivery, ordering, or error checking. This makes it faster and suitable for real-time applications like VoIP or gaming where dropped packets are acceptable.",
+        "subject": "Networking"
+    },
+    {
+        "id": 84,
+        "question": "What is a 'Dead Letter Queue' (DLQ)?",
+        "options": [
+            "A queue for emails that bounced",
+            "A queue where messages are sent if they cannot be processed successfully after retries",
+            "A slow queue",
+            "A deleted queue"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A DLQ is a service implementation to store messages that meet one or more of the following criteria: Message is sent to a queue that doesn't exist, queue length limit is exceeded, message is rejected by consumer, or expires.",
+        "subject": "General"
+    },
+    {
+        "id": 85,
+        "question": "What is 'Service Mesh' (e.g., Istio)?",
+        "options": [
+            "A mesh of network cables",
+            "An infrastructure layer for handling service-to-service communication (observability, traffic management, security)",
+            "A type of microservice",
+            "A database cluster"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Service Mesh is a dedicated infrastructure layer that controls how different parts of an application share data with one another. It usually involves a sidecar proxy accompanying each service.",
+        "subject": "Load Balancing"
+    },
+    {
+        "id": 86,
+        "question": "What is 'Reference Counting' in Garbage Collection?",
+        "options": [
+            "Counting the number of references to an object",
+            "Counting array elements",
+            "Tracing reachability from GC roots",
+            "Counting memory pages"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Reference Counting keeps a count of the number of references to an object. When the count drops to zero, the object effectively is inaccessible and can be reclaimed. It struggles with cyclic references (cycles).",
+        "subject": "General"
+    },
+    {
+        "id": 87,
+        "question": "What is 'Mark-and-Sweep'?",
+        "options": [
+            "A broom algorithm",
+            "A GC algorithm that visits all accessible objects (Mark) and then reclaims memory of unvisited ones (Sweep)",
+            "A cleaning robot",
+            "A cache eviction policy"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Mark-and-Sweep is a tracing garbage collection algorithm. It pauses execution to traverse the object graph from roots, marking live objects, and then sweeps the heap to free unmarked memory. Key issue is 'Stop-the-World' pauses.",
+        "subject": "General"
+    },
+    {
+        "id": 88,
+        "question": "What is 'Canary Deployment'?",
+        "options": [
+            "Using birds to test code",
+            "Rolling out a new version to a small percentage of users before a full rollout",
+            "Deploying only to test servers",
+            "Blue-Green deployment"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Canary deployment limits the risk of a new version by deploying it to a small subset of users. If the 'canary' shows signs of issues (errors, latency), the rollout is rolled back.",
+        "subject": "General"
+    },
+    {
+        "id": 89,
+        "question": "What is 'Zero-Copy'?",
+        "options": [
+            "Copying nothing",
+            "A technique that avoids CPU data copying between intermediate buffers in the kernel and user space",
+            "Using shared memory only",
+            "A copyright law"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Zero-copy operations (like `sendfile`) allow the CPU to coordinate the transfer of data (e.g., disk to network card) without copying the data into user space RAM, significantly reducing context switches and CPU load.",
+        "subject": "General"
+    },
+    {
+        "id": 90,
+        "question": "What is 'Rate Limiting' primarily used for?",
+        "options": [
+            "Limiting the speed of light",
+            "Protecting APIs from overuse and DoS attacks by limiting requests per user/IP",
+            "Limiting database size",
+            "Limiting code lines"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Rate limiting controls the number of requests a user can make in a given timeframe. It is essential for security (DoS protection) and ensuring fair usage (quality of service).",
+        "subject": "Security"
+    },
+    {
+        "id": 91,
+        "question": "What is 'Database Partitioning' vs 'Replication'?",
+        "options": [
+            "Partitioning splits data; Replication copies data",
+            "Partitioning copies data; Replication splits data",
+            "They are the same",
+            "Partitioning is for backup; Replication is for speed"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Partitioning (Sharding) distributes different data across multiple nodes to scale storage/compute. Replication copies the same data to multiple nodes for redundancy and read scalability.",
+        "subject": "Databases"
+    },
+    {
+        "id": 92,
+        "question": "What is a 'Trie' (Prefix Tree)?",
+        "options": [
+            "A tree with three branches",
+            "A tree data structure used for efficient retrieval of keys in a dataset of strings",
+            "A balanced binary tree",
+            "A database index"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Trie is a tree-like data structure used to store a dynamic set of strings where the keys are usually strings. It is very efficient for prefix-based lookups (autocomplete).",
+        "subject": "General"
+    },
+    {
+        "id": 93,
+        "question": "What is 'Lazy Loading'?",
+        "options": [
+            "Loading data only when it is requested",
+            "A developer being lazy",
+            "Loading everything at startup",
+            "Loading data in the background"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Lazy loading defers the initialization of an object or loading of a resource until the point at which it is actually needed. This saves memory and improves startup time.",
+        "subject": "General"
+    },
+    {
+        "id": 94,
+        "question": "What is 'Connection Pooling'?",
+        "options": [
+            "Pooling water for servers",
+            "Maintaining a cache of database connections so they can be reused",
+            "Sharing internet connection",
+            "Connecting all servers together"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Creating a database connection is expensive (handshake). Connection pooling keeps a set of open connections ready for use, reducing the overhead of establishing a new connection for every request.",
+        "subject": "Databases"
+    },
+    {
+        "id": 95,
+        "question": "What is 'Cross-Origin Resource Sharing' (CORS)?",
+        "options": [
+            "Sharing CPU cores",
+            "A mechanism that allows restricted resources on a web page to be requested from another domain",
+            "Replicating data across regions",
+            "Sharing database tables"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "CORS is a browser security mechanism that allows a server to indicate any other origins (domain, scheme, or port) than its own from which a browser should permit loading resources.",
+        "subject": "Security"
+    },
+    {
+        "id": 96,
+        "question": "What is 'SOLID'?",
+        "options": [
+            "A state of matter",
+            "Five design principles for writing maintainable and scalable object-oriented software",
+            "A database type",
+            "A caching strategy"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "SOLID stands for Single Responsibility, Open-Closed, Liskov Substitution, Interface Segregation, and Dependency Inversion. They are guidelines for good software architecture.",
+        "subject": "General"
+    },
+    {
+        "id": 97,
+        "question": "What is 'Idempotency Key'?",
+        "options": [
+            "A password",
+            "A unique value sent in a request to ensure safe retries without side effects",
+            "A database primary key",
+            "An encryption key"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "An Idempotency Key is a header sent by a client (e.g., in payment processing). If the network fails and the client retries, the server recognizes the key and returns the previous result instead of processing the payment twice.",
+        "subject": "Microservices"
+    },
+    {
+        "id": 98,
+        "question": "What is 'Dependency Injection' (DI)?",
+        "options": [
+            "Injecting code into a running process",
+            "A design pattern where an object receives other objects that it depends on",
+            "Installing dependencies via npm",
+            "A type of SQL injection"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DI achieves Inversion of Control. Instead of a class creating its dependencies, they are provided to it (injected). This improves testability and decoupling.",
+        "subject": "General"
+    },
+    {
+        "id": 99,
+        "question": "What is 'OOM Killer' in Linux?",
+        "options": [
+            "Out of Memory Killer",
+            "Object Oriented Manager",
+            "Over Optimization Manager",
+            "Only On Monday"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "When the Linux kernel runs out of memory, the OOM Killer heuristically selects a process (often one using high memory) and kills it to free up RAM for the system to remain responsive.",
+        "subject": "General"
+    },
+    {
+        "id": 100,
+        "question": "What is 'B-Tree' primarily used for?",
+        "options": [
+            "In-memory caches",
+            "Database and file system indexing on disk",
+            "Machine learning models",
+            "Network routing tables"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "B-Trees are self-balancing tree data structures that maintain sorted data and allow searches, sequential access, insertions, and deletions in logarithmic time. They are optimized for systems that read and write large blocks of data (disks).",
+        "subject": "Databases"
+    },
+    {
+        "question": "What is the primary data structure used by Redis for its Key-Value store?",
+        "options": [
+            "B-Tree",
+            "Hash Table",
+            "LSM Tree",
+            "Linked List"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis primarily uses a global Hash Table to store all keys and values, allowing for O(1) average time complexity for lookups.",
+        "subject": "Redis",
+        "id": 101
+    },
+    {
+        "question": "Which Redis persistence mechanism provides faster recovery but potentially more data loss?",
+        "options": [
+            "AOF (Append Only File)",
+            "RDB (Redis Database Backup)",
+            "WAL (Write Ahead Log)",
+            "Snapshot Isolation"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "RDB (Snapshotting) creates point-in-time snapshots. It is faster to restore from but you lose data between the last snapshot and the crash.",
+        "subject": "Redis",
+        "id": 102
+    },
+    {
+        "question": "What is a 'Redis Sentinel' used for?",
+        "options": [
+            "Data encryption",
+            "Monitoring, Notification, and Automatic Failover",
+            "Compressing data",
+            "Query optimization"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis Sentinel provides high availability. It monitors Redis instances, notifies administrators of errors, and handles automatic failover if the master goes down.",
+        "subject": "Redis",
+        "id": 103
+    },
+    {
+        "question": "Which data structure in Redis is most suitable for implementing a Leaderboard?",
+        "options": [
+            "Set",
+            "List",
+            "Sorted Set (ZSET)",
+            "Hash"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Sorted Sets (ZSET) store unique elements with a score. They support efficient retrieval of elements by rank or score range, making them perfect for leaderboards.",
+        "subject": "Redis",
+        "id": 104
+    },
+    {
+        "question": "How does Redis handle data expiration?",
+        "options": [
+            "It deletes all data at midnight",
+            "Using active (probabilistic) and passive (lazy) expiration",
+            "It requires a separate garbage collector process",
+            "It overwrites old data immediately"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis uses two methods: Lazy (remove when accessed) and Active (randomly test keys with expiry and remove expired ones) to ensure expired keys are cleaned up.",
+        "subject": "Redis",
+        "id": 105
+    },
+    {
+        "question": "What is 'Redis Cluster'?",
+        "options": [
+            "A single large Redis instance",
+            "A distributed implementation of Redis with automatic sharding",
+            "A backup service",
+            "A GUI for Redis"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis Cluster provides a way to run a Redis installation where data is automatically sharded across multiple Redis nodes.",
+        "subject": "Redis",
+        "id": 106
+    },
+    {
+        "question": "What is the main limitation of Redis compared to a disk-based DB?",
+        "options": [
+            "It is slower",
+            "It requires dataset to fit in RAM",
+            "It does not support strings",
+            "It cannot be replicated"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Since Redis is an in-memory store, the entire dataset must generally fit within the available RAM, unlike disk-based databases which can store petabytes.",
+        "subject": "Redis",
+        "id": 107
+    },
+    {
+        "question": "In Redis, what is 'Pipelining'?",
+        "options": [
+            "Sending multiple commands without waiting for replies",
+            "Compressing network traffic",
+            "Encrypting the connection",
+            "Streaming video"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Pipelining facilitates sending multiple commands to the server without waiting for the replies, reducing the cost of Round Trip Time (RTT).",
+        "subject": "Redis",
+        "id": 108
+    },
+    {
+        "question": "What happens when Redis runs out of memory (maxmemory reached)?",
+        "options": [
+            "It crashes",
+            "It always stops accepting writes",
+            "It evicts keys according to the configured eviction policy (e.g., LRU, LFU)",
+            "It writes to swap automatically"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Redis will try to remove keys based on the `maxmemory-policy` (e.g., allkeys-lru, volatile-lru). If it cannot free memory, it returns an error for write commands.",
+        "subject": "Redis",
+        "id": 109
+    },
+    {
+        "question": "Which Redis data structure is a linked list of strings?",
+        "options": [
+            "Redis List",
+            "Redis Set",
+            "Redis Hash",
+            "Redis Stream"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Redis Lists are implemented as linked lists. This makes adding elements to the head or tail O(1) but accessing by index O(N).",
+        "subject": "Redis",
+        "id": 110
+    },
+    {
+        "question": "What is the pub/sub feature in Redis?",
+        "options": [
+            "Publish/Subscribe messaging pattern",
+            "Public/Subnet configuration",
+            "Publication Submission",
+            "Public Substitute"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Pub/Sub allows senders (publishers) to send messages into channels, while receivers (subscribers) listen to them, decoupling the message senders from receivers.",
+        "subject": "Redis",
+        "id": 111
+    },
+    {
+        "question": "Is Redis single-threaded?",
+        "options": [
+            "No, it uses a thread pool for everything",
+            "Yes, the main event loop is single-threaded",
+            "Yes, but only for reads",
+            "No, it uses multiple processes by default"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis uses a single-threaded architecture for its main event loop to handle commands, ensuring atomicity and avoiding context-switching overhead. However, it uses background threads for I/O tasks like snapshotting.",
+        "subject": "Redis",
+        "id": 112
+    },
+    {
+        "question": "What is a 'Hash Slot' in Redis Cluster?",
+        "options": [
+            "A slot for physical RAM",
+            "A logical unit for data sharding (there are 16384 slots)",
+            "A type of encryption",
+            "A backup slot"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis Cluster does not use consistent hashing, but max 16384 hash slots. Every key is mapped to a hash slot, and slots are distributed among nodes.",
+        "subject": "Redis",
+        "id": 113
+    },
+    {
+        "question": "What type of database is Amazon DynamoDB?",
+        "options": [
+            "Relational (SQL)",
+            "Key-Value and Document (NoSQL)",
+            "Graph",
+            "Time Series"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DynamoDB is a fully managed proprietary NoSQL database service that supports key-value and document data structures.",
+        "subject": "DynamoDB",
+        "id": 114
+    },
+    {
+        "question": "In DynamoDB, what is the 'Partition Key'?",
+        "options": [
+            "A key used to encrypt the partition",
+            "The primary key attribute used to distribute data across physical partitions",
+            "The backup key",
+            "The sorting key"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DynamoDB uses the partition key's value as input to an internal hash function. The output determines the partition where the item is stored.",
+        "subject": "DynamoDB",
+        "id": 115
+    },
+    {
+        "question": "What is a 'Sort Key' (Range Key) in DynamoDB?",
+        "options": [
+            "A key used to sort table names",
+            "The second part of a composite primary key that sorts items with the same partition key",
+            "A key for sorting the entire database",
+            "A secondary index"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "In a composite primary key (Partition Key + Sort Key), the Sort Key stores items with the same Partition Key physically close together, sorted by value.",
+        "subject": "DynamoDB",
+        "id": 116
+    },
+    {
+        "question": "What is 'Provisioned Throughput' in DynamoDB?",
+        "options": [
+            "The amount of RAM allocated",
+            "Defining Read Capacity Units (RCUs) and Write Capacity Units (WCUs)",
+            "The network bandwidth",
+            "The disk space"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "You assume responsibility for defined throughput capacity. You pay for the provisioned RCUs and WCUs, regardless of whether you use them (unless using On-Demand mode).",
+        "subject": "DynamoDB",
+        "id": 117
+    },
+    {
+        "question": "What is 'Eventually Consistent Read' in DynamoDB?",
+        "options": [
+            "The default read mode that might return stale data but costs half the RCUs",
+            "A read that never returns",
+            "A slow read",
+            "A read that guarantees latest data"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Eventually Consistent Reads maximize read throughput and effectively cost half the RCUs of a Strongly Consistent Read, but might not reflect the results of a recently completed write.",
+        "subject": "DynamoDB",
+        "id": 118
+    },
+    {
+        "question": "What is a 'GSI' (Global Secondary Index) in DynamoDB?",
+        "options": [
+            "Grid System Index",
+            "An index with a partition key and sort key that can be different from those on the base table",
+            "Global Server Identifier",
+            "A backup index"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "GSI permits queries on attributes other than the table's primary key. It can have a different partition key and sort key from the main table and is stored separately.",
+        "subject": "DynamoDB",
+        "id": 119
+    },
+    {
+        "question": "What is 'LSI' (Local Secondary Index) in DynamoDB?",
+        "options": [
+            "An index with the same partition key as the base table but a different sort key",
+            "Local Server Index",
+            "Light Storage Interface",
+            "Large Scale Index"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "LSI allows querying data using the same partition key but a different sort key. It must be created when the table is created.",
+        "subject": "DynamoDB",
+        "id": 120
+    },
+    {
+        "question": "What happens if you exceed your provisioned throughput in DynamoDB?",
+        "options": [
+            "The request is throttled (rejected with 400 error)",
+            "The database scales up automatically instantly",
+            "The request is queued forever",
+            "The table is deleted"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "DynamoDB throttles requests that exceed the allocated RCU/WCU, returning a 'ProvisionedThroughputExceededException'. The SDK usually handles retries with backoff.",
+        "subject": "DynamoDB",
+        "id": 121
+    },
+    {
+        "question": "Does DynamoDB support ACID transactions?",
+        "options": [
+            "No, never",
+            "Yes, for single and multi-item operations within and across tables",
+            "Only for single items",
+            "Only for read operations"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DynamoDB supports ACID transactions across one or more tables within a single AWS account and region, streamlining workflows that require all-or-nothing changes.",
+        "subject": "DynamoDB",
+        "id": 122
+    },
+    {
+        "question": "What is 'DynamoDB Streams'?",
+        "options": [
+            "A video streaming service",
+            "An ordered flow of information about changes to items in a DynamoDB table",
+            "A query language",
+            "A backup tool"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DynamoDB Streams captures a time-ordered sequence of item-level modifications in any DynamoDB table and stores this information for up to 24 hours.",
+        "subject": "DynamoDB",
+        "id": 123
+    },
+    {
+        "question": "What is the 'Item Size Limit' in DynamoDB?",
+        "options": [
+            "1 KB",
+            "400 KB",
+            "1 MB",
+            "1 GB"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The maximum size of a single item in DynamoDB (including attribute names and values) is 400 KB.",
+        "subject": "DynamoDB",
+        "id": 124
+    },
+    {
+        "question": "What is 'DAX' (DynamoDB Accelerator)?",
+        "options": [
+            "A query syntax",
+            "A fully managed, highly available, in-memory cache for DynamoDB",
+            "A simplified version of DynamoDB",
+            "A migration tool"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DAX is an in-memory cache that delivers up to 10x performance improvement from milliseconds to microseconds for read-heavy workloads.",
+        "subject": "DynamoDB",
+        "id": 125
+    },
+    {
+        "question": "In DynamoDB, what is the 'Hot Partition' problem?",
+        "options": [
+            "When a partition overheats physically",
+            "When access is unevenly distributed, causing one partition to exceed its throughput limits",
+            "When data is deleted too fast",
+            "When you use too many hotkeys"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "If a workload is uneven (e.g., many requests for a single partition key), it creates a 'hot partition' that can handle a limited amount of throughput, potentially causing throttling even if total table throughput is sufficient.",
+        "subject": "DynamoDB",
+        "id": 126
+    },
+    {
+        "question": "What is the maximum size of a DynamoDB partition key value?",
+        "options": [
+            "1 KB",
+            "2048 bytes",
+            "400 KB",
+            "1024 bytes"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The maximum length for a partition key value is 2048 bytes.",
+        "subject": "DynamoDB",
+        "id": 127
+    },
+    {
+        "question": "What is the maximum size of a DynamoDB sort key value?",
+        "options": [
+            "1 KB",
+            "1024 bytes",
+            "400 KB",
+            "2048 bytes"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The maximum length for a sort key value is 1024 bytes.",
+        "subject": "DynamoDB",
+        "id": 128
+    },
+    {
+        "question": "Which DynamoDB write operation creates a new item or replaces an old item with a new item?",
+        "options": [
+            "UpdateItem",
+            "PutItem",
+            "BatchWriteItem",
+            "TransactWriteItems"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "PutItem creates a new item, or replaces an old item with a new item. If an item with the same primary key already exists, PutItem replaces it completely.",
+        "subject": "DynamoDB",
+        "id": 129
+    },
+    {
+        "question": "In DynamoDB, which consistency model offers the lowest latency?",
+        "options": [
+            "Strongly Consistent Reads",
+            "Eventual Consistent Reads",
+            "Transactional Reads",
+            "Linearizable Reads"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Eventual Consistent Reads offer the lowest read latency and highest read throughput, but data might be stale.",
+        "subject": "DynamoDB",
+        "id": 130
+    },
+    {
+        "question": "What is the limit on the number of Global Secondary Indexes (GSIs) per table by default?",
+        "options": [
+            "5",
+            "10",
+            "20",
+            "50"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "By default, you can have up to 20 Global Secondary Indexes per table.",
+        "subject": "DynamoDB",
+        "id": 131
+    },
+    {
+        "question": "Can you add a Local Secondary Index (LSI) to an existing DynamoDB table?",
+        "options": [
+            "Yes, anytime",
+            "No, only at table creation",
+            "Yes, but table will be locked",
+            "Yes, if the table is empty"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Local Secondary Indexes must be created when the table is created. You cannot add or delete them later.",
+        "subject": "DynamoDB",
+        "id": 132
+    },
+    {
+        "question": "Which of the following consumes Write Capacity Units (WCUs)?",
+        "options": [
+            "GetItem",
+            "Query",
+            "PutItem",
+            "Scan"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "PutItem is a write operation and consumes Write Capacity Units. GetItem, Query, and Scan consume Read Capacity Units.",
+        "subject": "DynamoDB",
+        "id": 133
+    },
+    {
+        "question": "What is the unit size for a Write Capacity Unit (WCU)?",
+        "options": [
+            "1 KB",
+            "4 KB",
+            "8 KB",
+            "16 KB"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "One Write Capacity Unit represents one write per second for an item up to 1 KB in size.",
+        "subject": "DynamoDB",
+        "id": 134
+    },
+    {
+        "question": "What is the unit size for a Strongly Consistent Read Capacity Unit (RCU)?",
+        "options": [
+            "1 KB",
+            "4 KB",
+            "8 KB",
+            "16 KB"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "One Read Capacity Unit represents one strongly consistent read per second for an item up to 4 KB in size.",
+        "subject": "DynamoDB",
+        "id": 135
+    },
+    {
+        "question": "Does DynamoDB support foreign keys?",
+        "options": [
+            "Yes, fully supported",
+            "No, it is a NoSQL database",
+            "Yes, via GSIs",
+            "Only for LSIs"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DynamoDB does not support foreign keys or referential integrity constraints like relational databases.",
+        "subject": "DynamoDB",
+        "id": 136
+    },
+    {
+        "question": "What is the maximum size of a DynamoDB item attribute name?",
+        "options": [
+            "255 chars",
+            "1024 bytes",
+            "64 KB",
+            "65535 bytes"
+        ],
+        "correctAnswerIndex": 3,
+        "explanation": "The maximum length of an attribute name is 65535 bytes.",
+        "subject": "DynamoDB",
+        "id": 137
+    },
+    {
+        "question": "How many items can `BatchGetItem` retrieve in a single operation?",
+        "options": [
+            "10",
+            "25",
+            "50",
+            "100"
+        ],
+        "correctAnswerIndex": 3,
+        "explanation": "A single implementation of BatchGetItem can retrieve up to 100 items.",
+        "subject": "DynamoDB",
+        "id": 138
+    },
+    {
+        "question": "What is the maximum data size `BatchGetItem` can retrieve?",
+        "options": [
+            "1 MB",
+            "16 MB",
+            "4 MB",
+            "Unlimited"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "BatchGetItem can retrieve up to 16 MB of data.",
+        "subject": "DynamoDB",
+        "id": 139
+    },
+    {
+        "question": "How many items can `BatchWriteItem` put or delete in a single operation?",
+        "options": [
+            "10",
+            "25",
+            "50",
+            "100"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A single BatchWriteItem operation can write up to 25 items.",
+        "subject": "DynamoDB",
+        "id": 140
+    },
+    {
+        "question": "What is DynamoDB TTL (Time To Live) used for?",
+        "options": [
+            "Caching data",
+            "Automatically deleting expired items",
+            "Sorting items",
+            "Encrypting items"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "TTL enables you to define when items in a table expire so that they can be automatically deleted from the database.",
+        "subject": "DynamoDB",
+        "id": 141
+    },
+    {
+        "question": "Does DynamoDB On-Demand Mode require you to specify capacity units?",
+        "options": [
+            "Yes, always",
+            "No, it scales automatically",
+            "Only for writes",
+            "Only for reads"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "On-Demand mode automatically manages read and write throughput capacity as traffic scales up and down, charging per request.",
+        "subject": "DynamoDB",
+        "id": 142
+    },
+    {
+        "question": "Which API checks for a condition before writing an item?",
+        "options": [
+            "PutItem with ConditionExpression",
+            "CheckItem",
+            "ValidateItem",
+            "TestAndSet"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "PutItem, UpdateItem, and DeleteItem operations support ConditionExpressions to verify the state of an item before modifying it.",
+        "subject": "DynamoDB",
+        "id": 143
+    },
+    {
+        "question": "What is 'Scan' in DynamoDB?",
+        "options": [
+            "Reads a single item",
+            "Reads all items in a table or index",
+            "Finds items based on key",
+            "Deletes all items"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Scan operation reads every item in a table or a secondary index. It is generally less efficient than Query.",
+        "subject": "DynamoDB",
+        "id": 144
+    },
+    {
+        "question": "What is 'Query' in DynamoDB?",
+        "options": [
+            "Reads all items",
+            "Finds items based on primary key values",
+            "Randomly selects items",
+            "Updates items"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Query operation finds items based on primary key values. It is efficient and recommended over Scan.",
+        "subject": "DynamoDB",
+        "id": 145
+    },
+    {
+        "question": "Can DynamoDB Streams preserve item order?",
+        "options": [
+            "No",
+            "Yes, strictly within a shard",
+            "Yes, globally across all shards",
+            "Only for 5 minutes"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DynamoDB Streams guarantees the order of stream records within a shard.",
+        "subject": "DynamoDB",
+        "id": 146
+    },
+    {
+        "question": "What happens if a ProvisionedThroughputExceededException occurs?",
+        "options": [
+            "Data is corrupted",
+            "Client should retry with exponential backoff",
+            "Table is locked",
+            "AWS deletes the table"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "The standard recommendation is to implement error retries and exponential backoff.",
+        "subject": "DynamoDB",
+        "id": 147
+    },
+    {
+        "question": "What data type is NOT supported in DynamoDB?",
+        "options": [
+            "Number",
+            "String",
+            "Date",
+            "Binary"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "DynamoDB does not have a native 'Date' or 'Datetime' type. Dates are typically stored as ISO-8601 strings or Number timestamps.",
+        "subject": "DynamoDB",
+        "id": 148
+    },
+    {
+        "question": "Which allows you to read data from a backup without restoring the whole table?",
+        "options": [
+            "Export to S3",
+            "PartiQL",
+            "DAX",
+            "Point-In-Time Recovery"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "You can export Amazon DynamoDB table data to an Amazon S3 bucket, allowing you to perform analytics or recover specific data.",
+        "subject": "DynamoDB",
+        "id": 149
+    },
+    {
+        "question": "What acts as the primary key for a GSI?",
+        "options": [
+            "Same as the base table",
+            "Partition key and optional sort key, can be different from base",
+            "Only Sort Key",
+            "The Item Hash"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "GSIs have their own Partition Key and optional Sort Key, which can differ from those of the base table.",
+        "subject": "DynamoDB",
+        "id": 150
+    },
+    {
+        "question": "What is 'PartiQL' for DynamoDB?",
+        "options": [
+            "A partition management tool",
+            "A SQL-compatible query language for DynamoDB",
+            "A simplified API",
+            "A backup format"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "PartiQL provides a SQL-compatible query language to select, insert, update, and delete data in DynamoDB.",
+        "subject": "DynamoDB",
+        "id": 151
+    },
+    {
+        "question": "Is DynamoDB schema-less?",
+        "options": [
+            "No, it is relational",
+            "Yes, except for the primary key",
+            "Yes, completely",
+            "No, schema is strict"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DynamoDB is schema-less for non-key attributes, but the primary key schema must be defined at creation.",
+        "subject": "DynamoDB",
+        "id": 152
+    },
+    {
+        "question": "What is the maximum nested depth for a DynamoDB document?",
+        "options": [
+            "10 levels",
+            "32 levels",
+            "Unlimited",
+            "100 levels"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "DynamoDB supports nested attributes up to 32 levels deep.",
+        "subject": "DynamoDB",
+        "id": 153
+    },
+    {
+        "question": "Which encryption type is enabled by default in DynamoDB?",
+        "options": [
+            "Encryption at Rest",
+            "Client-side encryption",
+            "None",
+            "SSL only"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "Encryption at Rest is enabled by default for all DynamoDB tables using AWS owned keys.",
+        "subject": "DynamoDB",
+        "id": 154
+    },
+    {
+        "question": "Can `Scan` results be sorted?",
+        "options": [
+            "Yes, by Primary Key",
+            "Yes, by any attribute",
+            "No, they are returned in no specific order",
+            "Yes, by timestamp"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "A Scan operation reads items in no particular order. You cannot request a sorted Scan.",
+        "subject": "DynamoDB",
+        "id": 155
+    },
+    {
+        "question": "What is the maximum throughput of a single DynamoDB partition?",
+        "options": [
+            "1000 WCU / 3000 RCU",
+            "3000 WCU / 1000 RCU",
+            "Unlimited",
+            "5000 WCU / 5000 RCU"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "A single partition can support a maximum of 3,000 Read Capacity Units (RCUs) or 1,000 Write Capacity Units (WCUs).",
+        "subject": "DynamoDB",
+        "id": 156
+    },
+    {
+        "question": "What is the maximum size of a value in Redis?",
+        "options": [
+            "1 GB",
+            "512 MB",
+            "128 MB",
+            "2 GB"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Redis value can hold up to 512 MB of data, including strings, lists, sets, and hashes.",
+        "subject": "Redis",
+        "id": 157
+    },
+    {
+        "question": "Which Redis data structure is a probabilistic data structure used to count unique items?",
+        "options": [
+            "HyperLogLog",
+            "Bitmap",
+            "Bloom Filter",
+            "GeoHash"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "HyperLogLog is a probabilistic data structure used in Redis to estimate the cardinality of a set with very little memory.",
+        "subject": "Redis",
+        "id": 158
+    },
+    {
+        "question": "Which command is used to set a key only if it does not already exist?",
+        "options": [
+            "SETNX",
+            "SET",
+            "MSET",
+            "GETSET"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "SETNX stands for 'SET if Not eXists'. It sets the key to the value only if the key does not already hold a value.",
+        "subject": "Redis",
+        "id": 159
+    },
+    {
+        "question": "What happens to expired keys in Redis?",
+        "options": [
+            "They are archived",
+            "They remain until manually deleted",
+            "They are automatically deleted",
+            "They are moved to a separate database"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Redis automatically deletes keys when their Time To Live (TTL) expires.",
+        "subject": "Redis",
+        "id": 160
+    },
+    {
+        "question": "Which eviction policy removes the least recently used keys first?",
+        "options": [
+            "allkeys-lru",
+            "allkeys-random",
+            "volatile-ttl",
+            "noeviction"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "allkeys-lru evicts the least recently used keys regardless of whether they have an expiration set.",
+        "subject": "Redis",
+        "id": 161
+    },
+    {
+        "question": "Does Redis support nested data structures (e.g., a List inside a Hash)?",
+        "options": [
+            "Yes, fully supported",
+            "No, Redis does not support nested types",
+            "Only via JSON module",
+            "Yes, up to 3 levels"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Native Redis data structures are not nested. You cannot store a List inside a Hash directly without using serialization or modules like RedisJSON.",
+        "subject": "Redis",
+        "id": 162
+    },
+    {
+        "question": "What is the complexity of adding an element to a Redis Set (SADD)?",
+        "options": [
+            "O(N)",
+            "O(1)",
+            "O(log N)",
+            "O(N*2)"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Adding an element to a Redis Set is O(1) in the average case.",
+        "subject": "Redis",
+        "id": 163
+    },
+    {
+        "question": "Which command allows you to execute a group of commands atomically in Redis?",
+        "options": [
+            "MULTI / EXEC",
+            "START / END",
+            "BEGIN / COMMIT",
+            "LOCK / UNLOCK"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "The MULTI command starts a transaction, and EXEC executes all commands queued in the transaction atomically.",
+        "subject": "Redis",
+        "id": 164
+    },
+    {
+        "question": "What is key space notification in Redis?",
+        "options": [
+            "A way to increase key size",
+            "A mechanism to receive events when keys change",
+            "A backup alert",
+            "A cluster heartbeat"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Keyspace notifications allow clients to subscribe to Pub/Sub channels to receive events affecting the Redis data set.",
+        "subject": "Redis",
+        "id": 165
+    },
+    {
+        "question": "Which Redis module adds support for full-text search and secondary indexing?",
+        "options": [
+            "RedisJSON",
+            "RediSearch",
+            "RedisGraph",
+            "RedisBloom"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "RediSearch provides full-text search, secondary indexing, and querying capabilities on top of Redis.",
+        "subject": "Redis",
+        "id": 166
+    },
+    {
+        "question": "What is the primary use case for Redis 'Bitmaps'?",
+        "options": [
+            "Storing images",
+            "Efficiently storing boolean information (e.g., daily active users)",
+            "Storing large text blobs",
+            "Indexing documents"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Bitmaps allow you to manipulate individual bits in a string, making them extremely space-efficient for storing boolean data like user activity status.",
+        "subject": "Redis",
+        "id": 167
+    },
+    {
+        "question": "How does Redis replication work by default?",
+        "options": [
+            "Synchronous",
+            "Asynchronous",
+            "Semi-synchronous",
+            "Manual only"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis replication is asynchronous by default, meaning the master acknowledges the write to the client before propagating to replicas.",
+        "subject": "Redis",
+        "id": 168
+    },
+    {
+        "question": "What is the 'SCAN' command used for?",
+        "options": [
+            "To incrementally iterate over keys",
+            "To scan for viruses",
+            "To read a file",
+            "To dump the database"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "SCAN allows you to iterate over the keys in the database incrementally without blocking the server like 'KEYS *' would.",
+        "subject": "Redis",
+        "id": 169
+    },
+    {
+        "question": "Which data structure would you use to implement a priority queue in Redis?",
+        "options": [
+            "List",
+            "Set",
+            "Sorted Set (ZSET)",
+            "Hash"
+        ],
+        "correctAnswerIndex": 2,
+        "explanation": "Sorted Sets are ideal for priority queues because elements are automatically ordered by their score (priority).",
+        "subject": "Redis",
+        "id": 170
+    },
+    {
+        "question": "What does the 'PERSIST' command do?",
+        "options": [
+            "Saves data to disk immediately",
+            "Removes the expiration from a key",
+            "Makes a key read-only",
+            "Locks the key"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "PERSIST removes the existing timeout on a key, turning a volatile key into a persistent key.",
+        "subject": "Redis",
+        "id": 171
+    },
+    {
+        "question": "What is 'Redis Geo' used for?",
+        "options": [
+            "Geometry calculations",
+            "Storing and querying geospatial data",
+            "Geophysical simulations",
+            "Global replication"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis Geo commands allow you to store geospatial items (latitude, longitude, member) and query by distance or radius.",
+        "subject": "Redis",
+        "id": 172
+    },
+    {
+        "question": "Which command returns the remaining time to live of a key?",
+        "options": [
+            "TTL",
+            "TIME",
+            "EXPIRE",
+            "CHECK"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "TTL returns the remaining time to live of a key in seconds.",
+        "subject": "Redis",
+        "id": 173
+    },
+    {
+        "question": "Can Redis be used as a Message Broker?",
+        "options": [
+            "No, it is a database",
+            "Yes, using Pub/Sub or Streams",
+            "Only via third-party plugins",
+            "Yes, but only for text"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis is widely used as a message broker using its Pub/Sub capabilities or the more durable Redis Streams data structure.",
+        "subject": "Redis",
+        "id": 174
+    },
+    {
+        "question": "What is 'Redis Mass Insertion'?",
+        "options": [
+            "Using the SET command repeatedly",
+            "Using the Redis protocol (RESP) to feed data via pipe mode",
+            "Manually typing data",
+            "Importing CSV"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Mass insertion involves generating the Redis protocol formatted data and piping it to the `redis-cli --pipe` command for maximum throughput.",
+        "subject": "Redis",
+        "id": 175
+    },
+    {
+        "question": "Does Redis support ACID transactions fully?",
+        "options": [
+            "Yes, always",
+            "No, it lacks rollback on error",
+            "Yes, via Lua scripts",
+            "No, it is eventually consistent"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis transactions (MULTI/EXEC) guarantee isolation and atomicity, but it does not support rollback mechanisms if a command fails inside a transaction (except for syntax errors).",
+        "subject": "Redis",
+        "id": 176
+    },
+    {
+        "question": "What is a 'Lua script' in Redis?",
+        "options": [
+            "A configuration file",
+            "A script executed on the server side atomically",
+            "A client-side library",
+            "A backup script"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Lua scripts allow you to define complex logic that runs atomically on the Redis server, avoiding race conditions.",
+        "subject": "Redis",
+        "id": 177
+    },
+    {
+        "question": "What is the max length of a Redis List?",
+        "options": [
+            "2^32 - 1 elements",
+            "Unlimited",
+            "1 Million",
+            "2048 elements"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "A Redis List can hold up to 2^32 - 1 elements (more than 4 billion).",
+        "subject": "Redis",
+        "id": 178
+    },
+    {
+        "question": "Which command adds an element to the head of a list?",
+        "options": [
+            "RPUSH",
+            "LPUSH",
+            "LADD",
+            "HSET"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "LPUSH inserts one or multiple values at the head (left) of the list.",
+        "subject": "Redis",
+        "id": 179
+    },
+    {
+        "question": "Which Redis String operation increments an integer value?",
+        "options": [
+            "ADD",
+            "INCR",
+            "SUM",
+            "COUNT"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "INCR increments the number stored at the key by one. It is atomic.",
+        "subject": "Redis",
+        "id": 180
+    },
+    {
+        "question": "What is the difference between RDB and AOF?",
+        "options": [
+            "RDB is faster, AOF is safer",
+            "AOF is faster, RDB is safer",
+            "They are the same",
+            "RDB is for Windows, AOF for Linux"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "RDB (snapshots) is faster for recovery but can lose recent data. AOF (Append Only File) logs every write, offering better durability but larger file sizes and slower recovery.",
+        "subject": "Redis",
+        "id": 181
+    },
+    {
+        "question": "Can you set an expiration on a specific hash field in Redis?",
+        "options": [
+            "Yes",
+            "No, only on the entire key",
+            "Only with a module",
+            "Yes, using HEXPIRE"
+        ],
+        "correctAnswerIndex": 3,
+        "explanation": "As of recent versions (Redis 7.4), Redis supports individual field expiration in Hashes (HEXPIRE), though historically it was only per-key.",
+        "subject": "Redis",
+        "id": 182
+    },
+    {
+        "question": "What is 'Redis Bloom Filter' useful for?",
+        "options": [
+            "Storing images",
+            "Checking for existence of an element with high efficiency",
+            "Filtering spam emails",
+            "Sorting numbers"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "A Bloom filter tells you if an element 'possibly exists' or 'definitely does not exist' in a set, using very little memory.",
+        "subject": "Redis",
+        "id": 183
+    },
+    {
+        "question": "What is the protocol used by Redis called?",
+        "options": [
+            "HTTP",
+            "RESP (Redis Serialization Protocol)",
+            "FTP",
+            "MQTT"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Redis clients communicate with the Redis server using RESP (Redis Serialization Protocol).",
+        "subject": "Redis",
+        "id": 184
+    },
+    {
+        "question": "What is 'Client-side Caching' in Redis?",
+        "options": [
+            "Caching executed by the browser",
+            "A feature where Redis helps clients cache keys locally to avoid network trips",
+            "Storing data on the client's disk",
+            "None of the above"
+        ],
+        "correctAnswerIndex": 1,
+        "explanation": "Client-side caching allows clients to cache responses locally, with Redis sending invalidation messages when the data changes.",
+        "subject": "Redis",
+        "id": 185
+    },
+    {
+        "question": "Which command gets all fields and values of a Hash?",
+        "options": [
+            "HGETALL",
+            "HGET",
+            "HMGET",
+            "HVALS"
+        ],
+        "correctAnswerIndex": 0,
+        "explanation": "HGETALL returns all fields and values of the hash stored at the key.",
+        "subject": "Redis",
+        "id": 186
+    }
+]
