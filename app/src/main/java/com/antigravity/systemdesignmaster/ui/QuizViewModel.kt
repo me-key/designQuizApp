@@ -32,6 +32,10 @@ class QuizViewModel(private val repository: QuizRepository) : ViewModel() {
 
     private val _subjects = MutableStateFlow<List<Subject>>(emptyList())
     val subjects: StateFlow<List<Subject>> = _subjects.asStateFlow()
+    
+    // Generation State
+    private val _generationState = MutableStateFlow<GenerationState>(GenerationState.Idle)
+    val generationState: StateFlow<GenerationState> = _generationState.asStateFlow()
 
     private var currentSubject: String = "General"
 
@@ -56,6 +60,29 @@ class QuizViewModel(private val repository: QuizRepository) : ViewModel() {
         viewModelScope.launch {
             repository.resetSubject(subject)
             refreshSubjects()
+        }
+    }
+    
+    fun deleteSubject(subject: String) {
+        viewModelScope.launch {
+            repository.deleteSubject(subject)
+            refreshSubjects()
+        }
+    }
+    
+    fun addSubject(topic: String) {
+        viewModelScope.launch {
+            _generationState.value = GenerationState.Loading(topic)
+            val success = repository.addNewSubject(topic)
+            if (success) {
+                _generationState.value = GenerationState.Success
+                refreshSubjects()
+            } else {
+                _generationState.value = GenerationState.Error("Failed to generate questions. Try a different topic.")
+            }
+            // Reset state after a delay or UI consumption
+            delay(3000)
+            _generationState.value = GenerationState.Idle
         }
     }
     
@@ -110,6 +137,13 @@ class QuizViewModel(private val repository: QuizRepository) : ViewModel() {
             }
         }
     }
+}
+
+sealed class GenerationState {
+    object Idle : GenerationState()
+    data class Loading(val topic: String) : GenerationState()
+    object Success : GenerationState()
+    data class Error(val message: String) : GenerationState()
 }
 
 class QuizViewModelFactory(private val repository: QuizRepository) : ViewModelProvider.Factory {

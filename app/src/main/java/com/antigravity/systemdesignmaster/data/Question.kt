@@ -9,7 +9,18 @@ enum class QuestionStatus {
     MASTERED
 }
 
-@Entity(tableName = "questions")
+@Entity(
+    tableName = "questions",
+    foreignKeys = [
+        androidx.room.ForeignKey(
+            entity = Subject::class,
+            parentColumns = ["id"],
+            childColumns = ["subjectId"],
+            onDelete = androidx.room.ForeignKey.CASCADE
+        )
+    ],
+    indices = [androidx.room.Index("subjectId")]
+)
 data class Question(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val text: String,
@@ -19,7 +30,7 @@ data class Question(
     val option3: String,
     val correctAnswerIndex: Int,
     val explanation: String,
-    val subject: String = "General",
+    val subjectId: Long, // Foreign Key to Subject
     val status: QuestionStatus = QuestionStatus.NEW,
-    val lastAnsweredTimestamp: Long = 0 // To track when strictly
+    val lastAnsweredTimestamp: Long = 0 
 )
